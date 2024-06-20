@@ -1,11 +1,17 @@
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Home from "./components/Home";
+
+const App = () => {
   return (
-    <>
-      <h1 className="text-3xl font-bold text-red-500">
-        No deberías poder acceder a esta página
-      </h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
