@@ -27,12 +27,12 @@ const Login = () => {
           <ButtonAction
             title={"Registrarse"}
             action={() => console.log("signUp")}
-            type={"signup"}
+            style={"signup"}
           />
           <ButtonAction
             title={"Iniciar sesión"}
             action={() => console.log("logIn")}
-            type={"login"}
+            style={"login"}
           />
         </div>
       </div>
