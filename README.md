@@ -83,4 +83,4 @@ Permite al usuario recuperar contraseña a través de su correo electrónico.
 
 ### Integración con Firebase
 
-Como se solicita, se utiliza la autenticación de Firebase para el login y signup de la aplicación
+Como se solicita, se utiliza la autenticación de Firebase para el login y signup de la aplicación. Por cuestiones de seguridad el apiKey no debería estar en el repo. Pero por cuestiones de prueba, lo he puesto aquí para facilitar la revisión de la prueba
