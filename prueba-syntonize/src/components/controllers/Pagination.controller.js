@@ -1,6 +1,6 @@
 export const generatePageNumbers = (totalPages, currentPage) => {
   const pageNumbers = [];
-  if (totalPages <= 6) {
+  if (totalPages <= 9) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
@@ -9,7 +9,7 @@ export const generatePageNumbers = (totalPages, currentPage) => {
 
     const start = Math.max(currentPage - 1, 3);
     const end = Math.min(currentPage + 1, totalPages - 2);
-
+    
     if (start > 3) {
       pageNumbers.push("...");
     }

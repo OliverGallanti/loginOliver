@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import Pagination from "./Pagination";
 import ListElements from "./ListElements";
 import { useNotification } from "../../context/NotificationContext";
+import PageElementSelector from "./PageElementSelector";
 
 const ListPaginated = () => {
   const [data, setData] = useState([]);
@@ -11,8 +12,7 @@ const ListPaginated = () => {
   const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
   const [description, setDescription] = useState("");
-
-  const itemsPerPage = 8;
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   const { showNotification } = useNotification();
 
@@ -49,28 +49,36 @@ const ListPaginated = () => {
   if (error) return showNotification("error loading", "error", true);
 
   const showDescription = (item) => {
-    setDescription(item.body);
+    setDescription(item);
     setModal(true);
   };
 
   return (
     <div>
-      <ul className="flex flex-col gap-2 min-h-[504px]">
+      <ul className="flex flex-col gap-2 w-[36vw] min-h-[504px] max-h-[512px] overflow-y-auto overflow-x-hidden">
         {currentItems.map((item) => (
           <ListElements
             key={item.id}
             item={item}
             showDescription={showDescription}
-          ></ListElements>
+          />
         ))}
       </ul>
-      <Modal openModal={modal} closeModal={() => setModal(false)}>
-        {description}
+      <Modal
+        openModal={modal}
+        closeModal={() => setModal(false)}
+        title={description.title}
+      >
+        {description.body}
       </Modal>
       <Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(data.length / itemsPerPage)}
         handleClick={handleClick}
+      />
+      <PageElementSelector
+        setItemsPerPage={setItemsPerPage}
+        itemsPerPage={itemsPerPage}
       />
     </div>
   );

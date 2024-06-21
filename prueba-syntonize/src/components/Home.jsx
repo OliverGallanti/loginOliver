@@ -20,7 +20,7 @@ const Home = () => {
         <strong>Email:</strong>
         {currentUser.email}
       </div>
-      <ListPaginated></ListPaginated>
+      <ListPaginated />
       <span className="text-sm flex justify-center gap-1 m-1">
         <button
           onClick={() =>

@@ -1,5 +1,9 @@
 # Prueba técnica Syntonize
 
+## Consideraciones
+
+Dado que decidí usar react lo más vanilla posible, tardé un poco más por la configuración de los componentes y el hecho de hacerlos desde cero.(Me corre prisa porque me voy de viaje mañana en la mañana) La lista paginada hubiera sido desarrollada mucho más rápido como una tabla con TanStack, React Prime tables o Datagrid de MUI o como una lista con MUI List y MUI Pagination por ejemplo. Los inputs, toaster y botones de la misma manera ya que simplifican mucho la vida para proyectos de corta duración. Tomé la libertad de utilizar Tailwind para acelerar la creación de estilos dado que con CSS vanilla se pone tedioso.
+
 ## Stacks utilizado
 
 ### React
@@ -33,6 +37,7 @@ Si el usuario está autenticado, puede acceder a la página principal. En caso c
             /controllers En controladores se lleva la lógica de los componentes para que se comuniquen con la base de datos y traten los datos
                 Home.controller.js
                 Login.controller.js
+                Pagination.controller.js
                 RecoverPassword.controller.js
                 SignUp.controller.js
             /services
@@ -40,7 +45,10 @@ Si el usuario está autenticado, puede acceder a la página principal. En caso c
             /uiComponents Aquí van los componentes comunes reutilizables que se pueden usar en toda la aplicación. Botones, textfields y tablas
                 ButtonAction.jsx
                 Layout.jsx El layout de la aplicación para no tener que repetir estilos
-                Table.jsx
+                ListElements.jsx
+                ListPaginated.jsx
+                Modal.jsx
+                Pagination.jsx
                 TextfieldInput.jsx
                 Toaster.jsx El toaster de notificación cuando se realiza una acción
         /context
@@ -68,7 +76,3 @@ Hace una petición a una api para mostrar una lista paginada con lazy loading de
 
 Permite al usuario recuperar contraseña a través de su correo electrónico.
 
-## Consideraciones
-
-Dado que decidí usar react lo más vanilla posible, tardé un poco más por la configuración de los componentes y el hecho de hacerlos desde cero. La lista paginada hubiera
-sido desarrollada mucho más rápido como una tabla con TanStack, React Prime tables o Datagrid de MUI o como una lista con MUI List y MUI Pagination por ejemplo. Los inputs, toaster y botones de la misma manera ya que simplifican mucho la vida para proyectos de corta duración. Tomé la libertad de utilizar Tailwind para acelerar la creación de estilos dado que con CSS vanilla se pone tedioso.
