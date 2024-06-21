@@ -33,13 +33,7 @@ export const validateFields = (
     setPasswordConfirmError("");
   }
 
-  if (!passwordConfirm) {
-    setPasswordConfirmError("La confirmación no puede estar vacía");
-    valid = false;
-  } else {
-    setPasswordConfirmError("");
-  }
-
+  console.log("valid?", valid);
   return valid;
 };
 
@@ -66,7 +60,8 @@ export const handleSubmit = async (
   setPasswordConfirmError,
   setNotificationMessage,
   setSeverity,
-  setLoading
+  setLoading,
+  navigate
 ) => {
   if (
     validateFields(
@@ -85,13 +80,19 @@ export const handleSubmit = async (
         setPasswordConfirmError,
         setNotificationMessage
       );
+      clearErrors(
+        setEmailError,
+        setPasswordError,
+        setPasswordConfirmError,
+        setNotificationMessage
+      );
       setLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       setNotificationMessage("Usuario registrado!");
-      setSeverity("success");
+      setSeverity("Success!");
       console.log(user);
-      window.location.href = "/login";
+      navigate("/login");
     } catch (error) {
       setNotificationMessage(error.message);
       setSeverity("error");
