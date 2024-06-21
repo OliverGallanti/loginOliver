@@ -27,7 +27,7 @@ El usuario se puede registrar desde cero
 El usuario puede iniciar sesión si ya tiene cuenta creada
 Si el usuario está autenticado, puede acceder a la página principal. En caso contrario, muestra un mensaje y redirecciona a la página del login
 
-/prueba-syntonize
+#### /prueba-syntonize
     /src
         /components Carpeta de componentes. En su raíz van los componentes de presentación como el Home, Login y Signup
             Home.jsx
@@ -57,7 +57,7 @@ Si el usuario está autenticado, puede acceder a la página principal. En caso c
         App.jsx De aquí manejamos las rutas en toda la app
         firebase.jsx Nuestra configuración de firebase
         main.jsx Aquí coloco los contextos de la aplicación
-    .env.local la información privada y por seguridad la guardo en un entorno local para no subirlo al repo
+    .env.local la información privada y por seguridad la guardo en un entorno local para no subirlo al repo 
 
 #### Página de Login
 
