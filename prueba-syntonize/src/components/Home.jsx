@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Layout from "./uiComponents/Layout";
 import { useAuth } from "../context/AuthContext";
-import { auth } from "../firebase";
 import ButtonAction from "./uiComponents/ButtonAction";
 import { useNavigate } from "react-router-dom";
 import Toaster from "./uiComponents/Toaster";
+import { handleLogout } from "./controllers/Home.controller";
 
 const Home = () => {
   const [notificationMessage, setNotificationMessage] = useState("");
@@ -12,17 +12,6 @@ const Home = () => {
 
   let navigate = useNavigate();
   const { currentUser } = useAuth();
-
-  const handleLogout = async () => {
-    setNotificationMessage("");
-    try {
-      await auth.signOut();
-      navigate("/login");
-    } catch (error) {
-      setNotificationMessage("Fallo al cerrar sesión");
-      setSeverity("error");
-    }
-  };
 
   return (
     <Layout title={"Dashboard"}>
@@ -33,7 +22,9 @@ const Home = () => {
       <ButtonAction title={"Editar perfil"} style={"action"} />
       <span className="text-sm flex justify-center gap-1 m-1">
         <button
-          onClick={handleLogout}
+          onClick={() =>
+            handleLogout(setNotificationMessage, navigate, setSeverity)
+          }
           className="italic font-semibold hover:text-red-500 transition-colors"
         >
           Cerrar sesión

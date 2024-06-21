@@ -26,14 +26,9 @@ export const validateFields = (
   return valid;
 };
 
-export const clearErrors = (
-  setEmailError,
-  setPasswordError,
-  setNotificationMessage
-) => {
+export const clearErrors = (setEmailError, setPasswordError) => {
   setEmailError("");
   setPasswordError("");
-  setNotificationMessage(null);
 };
 
 export const handleSubmit = async (
@@ -44,25 +39,20 @@ export const handleSubmit = async (
   clearErrors,
   setEmailError,
   setPasswordError,
-  setNotificationMessage,
   setLoading,
-  setSeverity
+  showNotification
 ) => {
   if (validateFields(email, password, setEmailError, setPasswordError)) {
     try {
-      clearErrors(setEmailError, setPasswordError, setNotificationMessage);
+      clearErrors(setEmailError, setPasswordError);
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser;
-      setNotificationMessage("");
-      setSeverity("Success! User logged in");
-      console.log("success", user);
+      showNotification("¡Sesión iniciada!", "success", true);
       navigate("/");
     } catch (error) {
-      setNotificationMessage(error.message);
-      setSeverity("error");
-      setEmailError("credenciales inválidas");
-      setPasswordError("credenciales inválidas");
+      showNotification(error.message, "error", true);
+      setEmailError("Credenciales inválidas");
+      setPasswordError("Credenciales inválidas");
       console.error(error.message);
     } finally {
       setLoading(false);

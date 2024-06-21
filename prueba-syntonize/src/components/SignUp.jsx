@@ -9,19 +9,20 @@ import {
 } from "../components/controllers/SignUp.controller";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "./uiComponents/Layout";
+import { useNotification } from "../context/NotificationContext";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [notificationMessage, setNotificationMessage] = useState(null);
-  const [severity, setSeverity] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordConfirmError, setPasswordConfirmError] = useState("");
   const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
+
+  const { showNotification } = useNotification();
 
   return (
     <Layout title={"Registro"}>
@@ -59,10 +60,9 @@ const SignUp = () => {
                 setEmailError,
                 setPasswordError,
                 setPasswordConfirmError,
-                setNotificationMessage,
-                setSeverity,
                 setLoading,
-                navigate
+                navigate,
+                showNotification
               )
             }
             style={"signup"}
@@ -80,9 +80,6 @@ const SignUp = () => {
           Inicia sesión
         </Link>
       </span>
-      {notificationMessage ? (
-        <Toaster message={notificationMessage} severity={severity} />
-      ) : null}
     </Layout>
   );
 };

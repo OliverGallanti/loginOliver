@@ -7,19 +7,19 @@ import {
   handleSubmit,
   validateFields,
 } from "./controllers/Login.controller";
-import Toaster from "./uiComponents/Toaster";
 import Layout from "./uiComponents/Layout";
+import { useNotification } from "../context/NotificationContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [notificationMessage, setNotificationMessage] = useState("");
-  const [severity, setSeverity] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
+
+  const { showNotification } = useNotification();
 
   return (
     <Layout title={"¡Bienvenido!"}>
@@ -50,14 +50,19 @@ const Login = () => {
                 clearErrors,
                 setEmailError,
                 setPasswordError,
-                setNotificationMessage,
                 setLoading,
-                setSeverity
+                showNotification
               )
             }
             disabled={loading}
             style={"login"}
           />
+          <Link
+            to="/recoverpassword"
+            className="hover:text-sky-600 transition-colors text-sm flex justify-center gap-1 m-1"
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
         </div>
       </div>
       <span className="text-sm flex justify-center gap-1 m-1">
@@ -69,9 +74,6 @@ const Login = () => {
           ¡Regístrate!
         </Link>
       </span>
-      {notificationMessage ? (
-        <Toaster message={notificationMessage} severity={severity} />
-      ) : null}{" "}
     </Layout>
   );
 };

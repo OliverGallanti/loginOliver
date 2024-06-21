@@ -33,20 +33,17 @@ export const validateFields = (
     setPasswordConfirmError("");
   }
 
-  console.log("valid?", valid);
   return valid;
 };
 
 export const clearErrors = (
   setEmailError,
   setPasswordError,
-  setPasswordConfirmError,
-  setNotificationMessage
+  setPasswordConfirmError
 ) => {
   setEmailError("");
   setPasswordError("");
   setPasswordConfirmError("");
-  setNotificationMessage(null);
 };
 
 export const handleSubmit = async (
@@ -58,10 +55,9 @@ export const handleSubmit = async (
   setEmailError,
   setPasswordError,
   setPasswordConfirmError,
-  setNotificationMessage,
-  setSeverity,
   setLoading,
-  navigate
+  navigate,
+  showNotification
 ) => {
   if (
     validateFields(
@@ -74,26 +70,14 @@ export const handleSubmit = async (
     )
   ) {
     try {
-      clearErrors(
-        setEmailError,
-        setPasswordError,
-        setPasswordConfirmError,
-        setNotificationMessage
-      );
-      clearErrors(
-        setEmailError,
-        setPasswordError,
-        setPasswordConfirmError,
-        setNotificationMessage
-      );
+      clearErrors(setEmailError, setPasswordError, setPasswordConfirmError);
+      clearErrors(setEmailError, setPasswordError, setPasswordConfirmError);
       setLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
-      setNotificationMessage("Usuario registrado!");
-      setSeverity("Success!");
+      showNotification("Usuario registrado!", "success", true);
       navigate("/login");
     } catch (error) {
-      setNotificationMessage(error.message);
-      setSeverity("error");
+      showNotification(error.message, "error", true);
       console.error(error.message);
     } finally {
       setLoading(false);
