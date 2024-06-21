@@ -5,6 +5,7 @@ import ButtonAction from "./uiComponents/ButtonAction";
 import { useNavigate } from "react-router-dom";
 import Toaster from "./uiComponents/Toaster";
 import { handleLogout } from "./controllers/Home.controller";
+import ListPaginated from "./uiComponents/ListPaginated";
 
 const Home = () => {
   const [notificationMessage, setNotificationMessage] = useState("");
@@ -19,7 +20,7 @@ const Home = () => {
         <strong>Email:</strong>
         {currentUser.email}
       </div>
-      <ButtonAction title={"Editar perfil"} style={"action"} />
+      <ListPaginated></ListPaginated>
       <span className="text-sm flex justify-center gap-1 m-1">
         <button
           onClick={() =>
