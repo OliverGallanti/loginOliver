@@ -58,6 +58,7 @@ const Login = () => {
                   setSeverity
                 )
               }
+              disabled={loading}
               style={"login"}
             />
           </div>
@@ -72,7 +73,6 @@ const Login = () => {
           ¡Regístrate!
         </Link>
       </span>
-      
       {notificationMessage ? (
         <Toaster message={notificationMessage} severity={severity} />
       ) : null}{" "}

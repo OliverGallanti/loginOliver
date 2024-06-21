@@ -38,6 +38,4 @@ En caso de querer redirigirse a la página de login, pueden hacerlo directamente
 
 #### Página de Inicio
 
-
-
 #### Página de Redireccionamiento
