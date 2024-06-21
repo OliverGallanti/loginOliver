@@ -8,6 +8,7 @@ import {
   clearErrors,
 } from "../components/controllers/SignUp.controller";
 import { Link, useNavigate } from "react-router-dom";
+import Layout from "./uiComponents/Layout";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -23,57 +24,53 @@ const SignUp = () => {
   let navigate = useNavigate();
 
   return (
-    <div className="w-screen h-screen bg-gray-50 grid place-content-center">
-      <div className="flex flex-col w-fit h-fit bg-white border-gray-400 shadow-md shadow-black/10 p-6 gap-4">
-        <h2 className="flex justify-center w-full text-[2rem] py-6 border-b-2 ">
-          Registro
-        </h2>
-        <div className="flex flex-col gap-4 rounded-xl p-6">
-          <TextfieldInput
-            placeholder={"Email"}
-            onChange={(e) => setEmail(e.target.value)}
-            type={"email"}
-            error={emailError}
-          />
+    <Layout title={"Registro"}>
+      <div className="flex flex-col gap-4 rounded-xl p-6">
+        <TextfieldInput
+          placeholder={"Email"}
+          onChange={(e) => setEmail(e.target.value)}
+          type={"email"}
+          error={emailError}
+        />
 
-          <TextfieldInput
-            placeholder={"Contraseña"}
-            type={"password"}
-            onChange={(e) => setPassword(e.target.value)}
-            error={passwordError}
-          />
+        <TextfieldInput
+          placeholder={"Contraseña"}
+          type={"password"}
+          onChange={(e) => setPassword(e.target.value)}
+          error={passwordError}
+        />
 
-          <TextfieldInput
-            placeholder={"Confirmar contraseña"}
-            type={"password"}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            error={passwordConfirmError}
+        <TextfieldInput
+          placeholder={"Confirmar contraseña"}
+          type={"password"}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          error={passwordConfirmError}
+        />
+        <div className="my-4">
+          <ButtonAction
+            title={"Registrarse"}
+            action={() =>
+              handleSubmit(
+                email,
+                password,
+                passwordConfirm,
+                validateFields,
+                clearErrors,
+                setEmailError,
+                setPasswordError,
+                setPasswordConfirmError,
+                setNotificationMessage,
+                setSeverity,
+                setLoading,
+                navigate
+              )
+            }
+            style={"signup"}
+            disabled={loading}
           />
-          <div className="my-4">
-            <ButtonAction
-              title={"Registrarse"}
-              action={() =>
-                handleSubmit(
-                  email,
-                  password,
-                  passwordConfirm,
-                  validateFields,
-                  clearErrors,
-                  setEmailError,
-                  setPasswordError,
-                  setPasswordConfirmError,
-                  setNotificationMessage,
-                  setSeverity,
-                  setLoading,
-                  navigate
-                )
-              }
-              style={"signup"}
-              disabled={loading}
-            />
-          </div>
         </div>
       </div>
+
       <span className="text-sm flex justify-center gap-1 m-1">
         <span>¿Ya tienes una cuenta?</span>
         <Link
@@ -86,7 +83,7 @@ const SignUp = () => {
       {notificationMessage ? (
         <Toaster message={notificationMessage} severity={severity} />
       ) : null}
-    </div>
+    </Layout>
   );
 };
 

@@ -61,6 +61,8 @@ export const handleSubmit = async (
     } catch (error) {
       setNotificationMessage(error.message);
       setSeverity("error");
+      setEmailError("credenciales inválidas");
+      setPasswordError("credenciales inválidas");
       console.error(error.message);
     } finally {
       setLoading(false);

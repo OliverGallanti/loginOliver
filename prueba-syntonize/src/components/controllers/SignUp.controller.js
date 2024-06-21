@@ -88,10 +88,8 @@ export const handleSubmit = async (
       );
       setLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser;
       setNotificationMessage("Usuario registrado!");
       setSeverity("Success!");
-      console.log(user);
       navigate("/login");
     } catch (error) {
       setNotificationMessage(error.message);
