@@ -2,7 +2,12 @@
 
 ## Consideraciones
 
-Dado que decidí usar react lo más vanilla posible, tardé un poco más por la configuración de los componentes y el hecho de hacerlos desde cero.(Me corre prisa porque me voy de viaje mañana en la mañana) La lista paginada hubiera sido desarrollada mucho más rápido como una tabla con TanStack, React Prime tables o Datagrid de MUI o como una lista con MUI List y MUI Pagination por ejemplo. Los inputs, toaster y botones de la misma manera ya que simplifican mucho la vida para proyectos de corta duración. Tomé la libertad de utilizar Tailwind para acelerar la creación de estilos dado que con CSS vanilla se pone tedioso.
+Dado que decidí usar react lo más vanilla posible, tardé un poco más por la configuración de los componentes y el hecho de hacerlos desde cero. La lista paginada hubiera sido desarrollada mucho más rápido como una tabla con TanStack, React Prime tables o Datagrid de MUI o como una lista con MUI List y MUI Pagination por ejemplo. Los inputs, toaster y botones de la misma manera ya que simplifican mucho la vida para proyectos de corta duración. Me he tomado la libertad de utilizar Tailwind para acelerar la creación de estilos.
+
+## Instrucciones para lanzar la app
+
+Descargar el repo en VSCode, hacer cd prueba-syntonize y bajarse los paquetes de dependencias con npm i
+Para correrlo se usa el comando npm run dev y se abre el [localhost:](http://localhost:5173/) que es el de VITE por defecto
 
 ## Stacks utilizado
 
@@ -76,3 +81,6 @@ Hace una petición a una api para mostrar una lista paginada con lazy loading de
 
 Permite al usuario recuperar contraseña a través de su correo electrónico.
 
+### Integración con Firebase
+
+Como se solicita, se utiliza la autenticación de Firebase para el login y signup de la aplicación

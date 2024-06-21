@@ -42,7 +42,7 @@ const SignUp = () => {
         />
 
         <TextfieldInput
-          placeholder={"Confirmar contraseña"}
+          placeholder={"Confirmar"}
           type={"password"}
           onChange={(e) => setPasswordConfirm(e.target.value)}
           error={passwordConfirmError}
